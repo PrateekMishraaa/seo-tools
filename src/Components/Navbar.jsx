@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import Logo from '../assets/trump.png';
 import { FaLink } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
 import { RxCross2 } from 'react-icons/rx';
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+const handleNavigate=()=>{
+  navigate('/signIn')
+}
   return (
     <nav className="w-full bg-[#0c121a] text-white shadow-md z-50 relative">
       <div className="h-24 px-6 flex items-center justify-between">
@@ -30,13 +34,12 @@ const Navbar = () => {
 
         {/* Right: Client Area + Menu Toggle */}
         <div className="flex items-center gap-4">
-          <a
-            href="/client-area"
-            className="hidden md:flex items-center gap-2 px-4 py-2 border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white transition uppercase text-sm font-semibold tracking-wider"
-          >
+        <button onClick={()=>handleNavigate()} className='hidden md:flex items-center gap-2 px-4 py-2 border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white transition uppercase text-sm font-semibold tracking-wider'>
+           
             <FaLink />
             Client Area
-          </a>
+       
+        </button>
 
           {/* Hamburger Icon */}
           <button

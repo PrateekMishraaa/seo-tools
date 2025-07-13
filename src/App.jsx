@@ -6,6 +6,8 @@ import Reseller from "../src/Pages/Reseller.jsx"
 import SingleTools from "../src/Pages/SingleTools.jsx"
 import ToolsBundle from "../src/Pages/SingleTools.jsx"
 import Contact from "../src/Pages/ContactUs.jsx"
+import SignIn from './Pages/SignIn.jsx'
+import SignUp from './Pages/SignUp.jsx'
 const App = () => {
   return (
   <>
@@ -16,6 +18,8 @@ const App = () => {
       <Route path='/single-tools' element={<SingleTools/>}/>
       <Route path='/tools-bundle' element={<ToolsBundle/>}/>
       <Route path='/contact-us' element={<Contact/>}/>
+      <Route path='/signIn' element={<SignIn/>}/>
+      <Route path='/sign-up' element={<SignUp/>}/>
     </Routes>
   </Router>
   </>
