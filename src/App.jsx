@@ -9,6 +9,7 @@ import Contact from "../src/Pages/ContactUs.jsx"
 import SignIn from './Pages/SignIn.jsx'
 import SignUp from './Pages/SignUp.jsx'
 import ProtectedRoute from './Pages/ProtectedRoute.jsx'
+import Member from './Pages/Member.jsx'
 const App = () => {
   return (
   <>
@@ -28,6 +29,9 @@ const App = () => {
       </ProtectedRoute>}/>
       <Route path='/contact-us' element={<ProtectedRoute>
         <Contact/>
+      </ProtectedRoute>}/>
+         <Route path='/member' element={<ProtectedRoute>
+        <Member/>
       </ProtectedRoute>}/>
       <Route path='/signIn' element={<SignIn/>}/>
       <Route path='/sign-up' element={<SignUp/>}/>

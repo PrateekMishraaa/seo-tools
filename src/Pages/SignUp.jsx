@@ -148,7 +148,7 @@ const SignUp = () => {
 
             {/* Already registered */}
             <p className="text-sm text-center mt-2 text-blue-500">
-              Already have an account? <a href="/login" className="underline">Login here</a>
+              Already have an account? <a href="/signIn" className="underline">Login here</a>
             </p>
           </form>
         </div>

@@ -41,7 +41,7 @@ console.log(handleInputChange)
             toast.success("User logged in successfully",response)
       localStorage.setItem("token", response.data.token);
             setTimeout(()=>{
-              navigate('/')
+              navigate('/member')
             },2000)
       }catch(error){
         console.log(error)
