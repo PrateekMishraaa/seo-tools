@@ -4,8 +4,9 @@ import { FaUser, FaLock, FaEye, FaEyeSlash, FaPhone } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-
+import {useNavigate} from "react-router-dom"
 const SignUp = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     FullName: "",
     Email: "",
@@ -39,10 +40,13 @@ const SignUp = () => {
       });
 
       toast.success("User signed up successfully!");
+      setTimeout(() => {
+        navigate('/signIn')
+      }, 2000);
       console.log(response.data);
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong during signup");
+      toast.error("Something went wrong during signup",error);
     }
   };
 

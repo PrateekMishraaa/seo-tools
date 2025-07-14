@@ -3,9 +3,12 @@ import Logo from '../assets/newlogo.png';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
 import { FaEye,FaEyeSlash } from 'react-icons/fa';
-
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Navigate, useNavigate } from 'react-router-dom';
 const SignUp = () => {
-
+  const navigate = useNavigate()
     const [formData,setFormData]= useState({
         Email:"",
         Password:""
@@ -22,6 +25,28 @@ console.log(handleInputChange)
     }
     console.log(handleShowPassword)
  
+    const handleSubmit=async(e)=>{
+      e.preventDefault()
+      if(!formData.Email || !formData.Password){
+        console.log("Invalid credentials")
+        toast.error("Invalid credentials")
+      }
+      try{
+          const response = await axios.post("http://localhost:4000/api/login",formData,{
+            "headers":{
+              "Content-Type":"application/json"
+            }
+          })
+          console.log(response)
+            toast.success("User logged in successfully",response)
+      localStorage.setItem("token", response.data.token);
+            setTimeout(()=>{
+              navigate('/')
+            },2000)
+      }catch(error){
+        console.log(error)
+      }
+    }
   return (
     <>
       <section className="bg-[#f8f6f3] min-h-screen w-full flex items-center justify-center">
@@ -40,7 +65,7 @@ console.log(handleInputChange)
           </h2>
 
           {/* Login Form */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Username/Email */}
             <div>
               <label className="block text-sm font-semibold mb-1">Email</label>
@@ -104,6 +129,7 @@ console.log(handleInputChange)
           </form>
         </div>
       </section>
+      <ToastContainer/>
     </>
   );
 };
